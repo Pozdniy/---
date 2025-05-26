@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Расчёт-Себестоимости", "Расчёт-Себестоимости\Расчёт-Себестоимости.csproj", "{94720CCD-A2CE-4F51-A353-1430DA4CC802}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupBM", "SetupBM\SetupBM.vdproj", "{91F69B02-4323-4AAA-A85F-1CC86D8F2AE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94720CCD-A2CE-4F51-A353-1430DA4CC802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94720CCD-A2CE-4F51-A353-1430DA4CC802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94720CCD-A2CE-4F51-A353-1430DA4CC802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94720CCD-A2CE-4F51-A353-1430DA4CC802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F69B02-4323-4AAA-A85F-1CC86D8F2AE7}.Debug|Any CPU.ActiveCfg = Debug
+		{91F69B02-4323-4AAA-A85F-1CC86D8F2AE7}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8132A11-FEA3-4BF0-9CDF-EDAFD6F54362}
+	EndGlobalSection
+EndGlobal

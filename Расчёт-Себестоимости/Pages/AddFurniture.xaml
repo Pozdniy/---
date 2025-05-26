@@ -1,0 +1,91 @@
+﻿<Page x:Class="Расчёт_Себестоимости.Pages.AddFurniture"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Расчёт_Себестоимости.Pages"
+        mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddFurniture" Loaded="Page_Loaded">
+    <Border Width="790" Height="390"
+            Background="White"
+            CornerRadius="20">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+        </Border.Effect>
+        <Grid Background="Transparent">
+            <TextBox x:Name="tbId" Text="{Binding IdFurniture}" Visibility="Hidden"></TextBox>
+            <StackPanel Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="800">
+                <StackPanel Margin="0,0,0,0" Orientation="Horizontal"
+                        Grid.Row="1">
+                    <Border CornerRadius="20" Background="WhiteSmoke" Width="275" Height="320" Margin="35,50,0,0"
+                    HorizontalAlignment="Center">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+                        </Border.Effect>
+                        <StackPanel Margin="10,10,0,0" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <TextBox x:Name="tbName"
+                             Width="250" Margin="0,20,0,0" Height="45"
+                             Text="{Binding Name}"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesing:HintAssist.Hint="Введите название" 
+                             FontSize="14" Cursor="Arrow" PreviewTextInput="tbName_PreviewTextInput"
+                             />
+                            <ComboBox x:Name="cbType"
+                              Width="250" Margin="0,10,0,0" Height="45" 
+                              DisplayMemberPath="Name"
+                              FontSize="14" Cursor="Arrow" materialDesing:HintAssist.Hint="Выберите тип мебели" />
+                            <TextBox x:Name="tbPrice"
+                             Width="250" Margin="0,10,0,0" Height="45"
+                             Text="{Binding Price,StringFormat={}{0:F0}}"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesing:HintAssist.Hint="Введите стоимость" 
+                             FontSize="14" Cursor="Arrow" PreviewTextInput="tbPrice_PreviewTextInput"/>
+                            <Button x:Name="btnAdd"
+                            Width="150"
+                            Margin="0,50,0,0"
+                            Background="Transparent" Content="Добавить" Cursor="Hand"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" Click="btnAdd_Click"/>
+                            <Button x:Name="btnExit" Visibility="Hidden"
+                            Width="100"
+                            Margin="0,10,0,0"
+                            Background="Transparent" Content="Удалить" Cursor="Hand"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" Click="btnExit_Click"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Margin="0,-320,0,0">
+                    <Border
+                x:Name="brdPics"
+                CornerRadius="20" Background="WhiteSmoke" VerticalAlignment="Center" Width="275" Height="320" Margin="0,0,35,50"
+                HorizontalAlignment="Right">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+                        </Border.Effect>
+                        <StackPanel  Margin="0,0,0,0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button x:Name="btnAddFile" Visibility="Hidden"
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,-20,0,10"
+                        FontSize="15"
+                        Content="Загрузка материала" 
+                        Width="150" Background="Transparent" BorderBrush="Transparent"
+                        FontWeight="Bold"
+                        Style="{StaticResource btnMainWindow}"
+                        Click="btnAddFile_Click" Cursor="Hand"
+                        />
+                            <StackPanel>
+                                <Border HorizontalAlignment="Center" CornerRadius="0" Background="Transparent" VerticalAlignment="Center" BorderThickness="1.5" BorderBrush="DarkGray">
+                                    <Image x:Name="photoFurniture" Source="{Binding Picture}" Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <Button x:Name="btnSave" Margin="0,-130,0,10" Width="150" Height="40"
+                    Style="{StaticResource MaterialDesignOutlinedButton}" 
+                    BorderBrush="Indigo" Cursor="Hand"
+                    FontSize="20" FontWeight="Light" FontFamily="Tahoma"
+                    Content="Сохранить" Background="Transparent" BorderThickness="2" Click="btnSave_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Page>

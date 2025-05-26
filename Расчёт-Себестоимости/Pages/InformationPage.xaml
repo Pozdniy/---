@@ -1,0 +1,235 @@
+﻿<Page x:Class="Расчёт_Себестоимости.Pages.InformationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Расчёт_Себестоимости.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InformationPage" Loaded="Page_Loaded">
+    <Border Height="450" Width="800"
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid>
+
+            <Image x:Name="imgFur" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                   Width="100" Height="100" Margin="0,50,35,0"></Image>
+
+            <Border Width="780" Height="120" VerticalAlignment="Top" HorizontalAlignment="Center"
+                    Background="White" Margin="0,40,0,0" CornerRadius="20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+
+                    <StackPanel Margin="40,0,0,0">
+                        <Button x:Name="btnBack" Foreground="Black" Background="White" Content="Назад" HorizontalAlignment="Center" Margin="0,40,0,0" Height="35" Width="120" Click="btnBack_Click"></Button>
+                    </StackPanel>
+                    
+                    <StackPanel HorizontalAlignment="Left" Margin="80,0,0,0">
+                        <Label x:Name="lbName" Content="Модель" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="150" Margin="0,5,0,-30"/>
+                        <TextBox x:Name="tbNameFur" Height="30" Width="150" HorizontalAlignment="Center"
+                 Margin="0,25,0,0" VerticalAlignment="Center"
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="150" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceFur" Height="30" Width="150" HorizontalAlignment="Center"
+                 Margin="0,10,0,0" VerticalAlignment="Center" 
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Cursor="Arrow"/>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Left" Margin="20,0,0,0">
+                        <Label Content="Ресурс" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="150" Margin="0,5,0,-15"/>
+                        <ComboBox x:Name="cbResources" 
+                              Height="30" Width="150" Margin="0,10,0,0"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Название ресурса"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" SelectionChanged="cbResources_SelectionChanged"
+                              />
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="150" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbResourcesPrice"
+                             Height="40" Width="150" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Left" Margin="30,0,0,0">
+                        <Label Content="Ресурс" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="150" Margin="0,5,0,-15"/>
+                        <ComboBox x:Name="cbResourcesTwo" 
+                              Height="30" Width="150" Margin="0,10,0,0"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Название ресурса"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" SelectionChanged="cbResourcesTwo_SelectionChanged"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="150" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbResourcesPriceTwo"
+                             Height="40" Width="150" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+            
+            <Border Width="780" Height="120" VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Background="White" Margin="0,30,0,0" CornerRadius="20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+                <StackPanel Orientation="Horizontal">
+
+                    <Button x:Name="btnUp" Click="btnUp_Click" Background="White"
+                            Margin="5,0,0,45" Height="20" Width="20" Foreground="Black" Content="+"></Button>
+                    <TextBox x:Name="tbCost"  Margin="-20,0,10,0" HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                             Width="20" Height="23" FontSize="12" IsReadOnly="True" ></TextBox>
+                    <Button x:Name="btnDown" Background="White" Content="-"
+                            Margin="-40,48,0,0" Height="20" Width="20" Click="btnDown_Click"></Button>
+                    
+                    <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0">
+                        <Label Content="Дерево" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="110" Margin="0,5,0,-15"/>
+                        <ComboBox x:Name="cbMaterial" TextBoxBase.TextChanged="OnComboboxTextChanged"
+                              Height="40" Width="110" Margin="0,5,0,0" MaxDropDownHeight="100"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Выберите материал" SelectionChanged="cbMaterial_SelectionChanged"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="110" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceMaterial"
+                             Height="40" Width="110" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+
+                    <Button x:Name="btnUp1" Click="btnUp1_Click" Background="White"
+                            Margin="10,0,0,45" Height="20" Width="20"></Button>
+                    <TextBox x:Name="tbCost1"  Margin="-20,0,10,0"  IsReadOnly="True" Width="20" Height="23" FontSize="12"></TextBox>
+                    <Button x:Name="btnDown1" Background="White" 
+                            Margin="-40,48,0,0" Height="20" Width="20" Click="btnDown1_Click"/>
+
+                    <StackPanel HorizontalAlignment="Center" Margin="0,0,0,0">
+                        <Label Content="Текстиль" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="100" Margin="0,5,0,-15"/>
+                        <ComboBox x:Name="cbMaterialTwo" 
+                              Height="40" Width="110" Margin="0,5,0,0" MaxDropDownHeight="100"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Выберите материал" SelectionChanged="cbMaterialTwo_SelectionChanged"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="110" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceMaterialTwo"
+                             Height="40" Width="110" Margin="0,0,0,0"
+                              VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <Button x:Name="btnUp2" Click="btnUp2_Click" Background="White"
+                            Margin="10,0,0,45" Height="20" Width="20"></Button>
+                    <TextBox x:Name="tbCost2"  Margin="-20,0,10,0"  IsReadOnly="True" Width="20" Height="23" FontSize="12"></TextBox>
+                    <Button x:Name="btnDown2" Background="White" 
+                            Margin="-40,48,0,0" Height="20" Width="20" Click="btnDown2_Click"></Button>
+
+                    <StackPanel HorizontalAlignment="Center" Margin="0,0,0,0">
+                        <Label Content="Химия" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="110" Margin="0,5,0,-15"/>
+                        <ComboBox x:Name="cbMaterialThree" 
+                              Height="40" Width="110" Margin="0,5,0,0" MaxDropDownHeight="100"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Выберите материал" SelectionChanged="cbMaterialThree_SelectionChanged"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="110" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceMaterialThree"
+                             Height="40" Width="110" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <Button x:Name="btnUp3" Click="btnUp3_Click" Background="White"
+                            Margin="10,0,0,45" Height="20" Width="20"></Button>
+                    <TextBox x:Name="tbCost3"  Margin="-20,0,10,0"  IsReadOnly="True" Width="20" Height="23" FontSize="12"></TextBox>
+                    <Button x:Name="btnDown3" Background="White" 
+                            Margin="-40,48,0,0" Height="20" Width="20" Click="btnDown3_Click"></Button>
+
+                    <StackPanel HorizontalAlignment="Center" Margin="0,0,0,0">
+                        <Label Content="Металл" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="120" Margin="0,5,0,-15"/>
+                        <ComboBox x:Name="cbMaterialFor" 
+                              Height="40" Width="120" Margin="0,5,0,0" MaxDropDownHeight="100"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Выберите материал" SelectionChanged="cbMaterialFor_SelectionChanged"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="120" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceMaterialFor"
+                             Height="40" Width="120" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <Button x:Name="btnUp4" Click="btnUp4_Click" Background="White"
+                            Margin="10,0,0,45" Height="20" Width="20"></Button>
+                    <TextBox x:Name="tbCost4"  Margin="-20,0,10,0"  IsReadOnly="True" Width="20" Height="23" FontSize="12"></TextBox>
+                    <Button x:Name="btnDown4" Background="White" 
+                            Margin="-40,48,0,0" Height="20" Width="20" Click="btnDown4_Click"></Button>
+
+
+                    <StackPanel HorizontalAlignment="Center" Margin="0,0,0,0">
+                        <Label Content="Доп. материал" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Height="30" Width="120" Margin="0,5,0,-15"/>
+                        <ComboBox x:Name="cbMaterialFive" 
+                              Height="40" Width="120" Margin="0,5,0,0" MaxDropDownHeight="100"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Выберите материал" SelectionChanged="cbMaterialFive_SelectionChanged"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="120" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceMaterialFive"
+                             Height="40" Width="120" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+            <Border Width="290" Height="80" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                    Background="White" Margin="0,0,40,45" CornerRadius="20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="10,0,0,0">
+                    <Button x:Name="btnCalculation" Height="35" Width="100" Style="{DynamicResource MaterialDesignFlatMidBgButton}"
+                            Background="White" BorderBrush="Indigo" Content="Расчёт" Foreground="Black" Click="btnCalculation_Click">
+                        
+                    </Button>
+                    <TextBox x:Name="tbCalculation" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             Height="35" Width="120" Foreground="Black"
+                             Margin="10,0,5,0" Style="{DynamicResource MaterialDesignComboBoxEditableTextBox}">
+                    </TextBox>
+                    <Label Content="Руб." VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold"></Label>
+                </StackPanel>
+            </Border>
+
+            <Border Width="400" Height="90" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                    Background="White" Margin="10,0,0,40" CornerRadius="20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Margin="10,5,0,0">
+                        <Label Content="Оплата труда" HorizontalContentAlignment="Center" FontSize="12" FontWeight="Bold" Height="30" Width="120" Margin="0,-5,0,-15"/>
+                        <ComboBox x:Name="cbWork" 
+                              Height="30" Width="115" Margin="0,0,0,0"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Выберите работу" SelectionChanged="cbWork_SelectionChanged"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="120" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceWork" 
+                             Height="30" Width="115" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Margin="10,5,0,0">
+                        <Label Content="Оплата труда" HorizontalContentAlignment="Center" FontSize="12" FontWeight="Bold" Height="30" Width="120" Margin="0,-5,0,-15"/>
+                        <ComboBox x:Name="cbWorkTwo" 
+                              Height="30" Width="115" Margin="0,0,0,0"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Выберите работу" SelectionChanged="cbWorkTwo_SelectionChanged"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="120" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceWorkTwo"
+                             Height="30" Width="115" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Margin="10,5,0,0">
+                        <Label Content="Оплата труда" HorizontalContentAlignment="Center" FontSize="12" FontWeight="Bold" Height="30" Width="120" Margin="0,-5,0,-15"/>
+                        <ComboBox x:Name="cbWorkThree" 
+                              Height="30" Width="115" Margin="0,0,0,0"
+                              DisplayMemberPath="Name" materialDesing:HintAssist.Hint="Выберите работу" SelectionChanged="cbWorkThree_SelectionChanged"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                        <Label Content="Цена(Руб.)" HorizontalContentAlignment="Center" FontSize="12" Height="30" Width="120" Margin="0,0,0,-20"/>
+                        <TextBox x:Name="tbPriceWorkThree"
+                             Height="30" Width="115" Margin="0,0,0,0"
+                             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Page>

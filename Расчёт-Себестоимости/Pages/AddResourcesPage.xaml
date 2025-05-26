@@ -1,0 +1,51 @@
+﻿<Page x:Class="Расчёт_Себестоимости.Pages.AddResourcesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Расчёт_Себестоимости.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddResourcesPage">
+
+    <Grid>
+        <Border Height="430" Width="780" CornerRadius="20" Background="White">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="20" Background="WhiteSmoke" Width="275" Height="320" Margin="0,0,0,0"
+                    HorizontalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="25" Color="LightGray" ShadowDepth="0"/>
+                    </Border.Effect>
+                    <StackPanel Margin="10,10,0,0" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <TextBox x:Name="tbName" materialDesing:HintAssist.Hint="Наименование ресурса"
+                             Width="250" Margin="0,20,0,0" Height="45"
+                             Text="{Binding Name}"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             FontSize="14" Cursor="Arrow" PreviewTextInput="tbName_PreviewTextInput"
+                             />
+                        <ComboBox x:Name="cbType" materialDesing:HintAssist.Hint="Выберите тип ресурса"
+                              Width="250" Margin="0,10,0,0" Height="45"                   
+                              FontSize="14" Cursor="Arrow" DisplayMemberPath="Name" />
+                        <TextBox x:Name="tbPrice" materialDesing:HintAssist.Hint="Стоимость ресурса"
+                             Width="250" Margin="0,10,0,0" Height="45"
+                             Text="{Binding Price,StringFormat={}{0:F0}}"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             FontSize="14" Cursor="Arrow" PreviewTextInput="tbPrice_PreviewTextInput"/>
+                        <Button x:Name="btnAdd" 
+                            Width="150"
+                            Margin="0,50,0,0"
+                            Background="Transparent" Content="Добавить" Cursor="Hand"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" Click="btnAdd_Click"/>
+                        <Button x:Name="btnExit" 
+                            Width="100"
+                            Margin="0,10,0,0"
+                            Background="Transparent" Content="Назад" Cursor="Hand"
+                            Style="{StaticResource MaterialDesignOutlinedButton}" Click="btnExit_Click"/>
+                        <TextBox x:Name="tbId" Text="{Binding IdMaterial}" Visibility="Hidden"></TextBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
